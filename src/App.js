@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import BanksManagementPage from './pages/BanksManagementPage';
+import MortgageCalculatorPage from './pages/MortgageCalculatorPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<ul
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					width: 400,
+					marginTop: 20,
+					listStyle: 'none',
+				}}
+			>
+				<li>
+					<Link to='/'>BanksManagementPage</Link>
+				</li>
+				<li>
+					<Link to='/mortgage'>MortgageCalculatorPage</Link>
+				</li>
+			</ul>
+			<Routes>
+				<Route path='/'>
+					<Route index element={<BanksManagementPage />} />
+					<Route index path='mortgage' element={<MortgageCalculatorPage />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
