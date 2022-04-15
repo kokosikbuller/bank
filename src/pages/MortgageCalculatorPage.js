@@ -37,11 +37,11 @@ const MortgageCalculatorPage = () => {
 		const r = Number(gg[0].percent);
 		const n = Number(gg[0].kredit);
 
-		const lol =
-			(p * Math.pow(r / 12, n) * Math.pow(1 + r / 12, n)) /
-				Math.pow(1 + r / 12, n) -
-			1;
-		setRes(lol);
+		const monthRate = r / 100 / 12;
+		const bottom = Math.pow(1 + monthRate, n) - 1;
+		const sum = monthRate / bottom;
+		const month = +(p * (monthRate + sum)).toFixed(2);
+		setRes(month);
 	};
 
 	return (

@@ -80,6 +80,10 @@ const BanksManagementPage = () => {
 	};
 
 	const handleOk = () => {
+		if (+inputs.percent > 100) {
+			alert('Процентная ставка не может быть боьше 100');
+			return;
+		}
 		setIsModalVisible(false);
 		setData([...data, inputs]);
 	};
